@@ -4,6 +4,6 @@ WORKDIR /vue-app
 RUN npm install
 RUN npm run-script build
 
+EXPOSE 80
 FROM openresty/openresty:alpine-fat
 COPY --from=vue-app-builder /vue-app/dist /usr/local/openresty/nginx/html
-
