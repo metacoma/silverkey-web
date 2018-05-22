@@ -9,7 +9,7 @@ FROM openresty/openresty:alpine-fat
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.9.5/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 RUN chmod +x /usr/local/bin/kubectl
 COPY --from=vue-app-builder /vue-app/dist /usr/local/openresty/nginx/html
-ADD backend/nginx.conf /etc/nginx/conf.d/default.conf
+ADD backend/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 # XXX multistage
 RUN apk update && apk add                       \
   alpine-sdk                                    \
