@@ -10,3 +10,16 @@ ADD https://storage.googleapis.com/kubernetes-release/release/v1.9.5/bin/linux/a
 RUN chmod +x /usr/local/bin/kubectl
 COPY --from=vue-app-builder /vue-app/dist /usr/local/openresty/nginx/html
 ADD backend/nginx.conf /etc/nginx/conf.d/default.conf
+RUN apk update && apk add                       \
+  alpine-sdk                                    \
+  skalibs                                       \
+  skalibs-dev
+WORKDIR /tmp
+RUN git clone https://github.com/jprjr/sockexec.git   \
+    && cd sockexec                                    \
+    && make install
+WORKDIR /tmp
+RUN git clone https://github.com/jprjr/idgaf          \
+    && cd idgaf                                       \
+    && gcc -o /usr/local/bin/idgaf idgaf.c            \
+    && rm -rf /tmp/idgaf /tmp/sockexec
