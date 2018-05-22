@@ -25,5 +25,9 @@ RUN git clone https://github.com/jprjr/idgaf          \
     && gcc -o /usr/local/bin/idgaf idgaf.c            \
     && rm -rf /tmp/idgaf /tmp/sockexec
 
+RUN opm install                                       \
+      jprjr/lua-resty-exec
+
+
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
