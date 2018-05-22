@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          if (ghprbSourceBranch != 'master') {
+          if (params.containsKey('ghprbSourceBranch') && ghprbSourceBranch != 'master') {
             label = 'staging'
             siteName = 'staging.silverkey.app'
           } else {
