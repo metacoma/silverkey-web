@@ -14,6 +14,8 @@ pipeline {
     stage('Build') {
       steps {
         script {
+          step([$class: 'WsCleanup'])
+          checkout scm
           if (params.containsKey('ghprbSourceBranch') && ghprbSourceBranch != 'master') {
             label = 'staging'
             siteName = 'staging.silverkey.app'
