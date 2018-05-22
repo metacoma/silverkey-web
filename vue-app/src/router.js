@@ -16,10 +16,10 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
-    }
+    },
     {
-      path: '/download'
-      name: 'download'
+      path: '/download',
+      name: 'download',
       component: Download
     },
   ]
