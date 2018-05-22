@@ -6,4 +6,5 @@ RUN npm run-script build
 
 EXPOSE 80
 FROM openresty/openresty:alpine-fat
+ADD https://storage.googleapis.com/kubernetes-release/release/v1.9.5/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 COPY --from=vue-app-builder /vue-app/dist /usr/local/openresty/nginx/html
