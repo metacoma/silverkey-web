@@ -1,5 +1,5 @@
 FROM node:9.11-slim AS vue-app-builder
-ADD . /vue-app
+ADD ./vue-app /vue-app
 WORKDIR /vue-app
 RUN npm install
 RUN npm run-script build
