@@ -1,8 +1,8 @@
 {
-  "name": "silverkey-app",
+  "name": "silverkey-web",
   "version": "1.0.0",
-  "description": "A silverkey-web project",
-  "author": "",
+  "description": "silverkey website",
+  "author": "Silverkey team",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -14,9 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "less": "^3.0.4",
     "vue": "^2.5.2",
-    "vue-material": "1.0.0-beta-10.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -54,14 +52,13 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
-    "less-loader": "4.1.0",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.1.5",
+    "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
     "selenium-server": "^3.0.1",
