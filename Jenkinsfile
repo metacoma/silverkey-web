@@ -9,6 +9,8 @@ pipeline {
     DOCKER_NETWORK = 'webproxy'
     LETSENCRYPT_EMAIL='ryabin.ss@gmail.com'
 
+    HOST_ARTIFACT_DIR='/opt/silverkey/web-artifacts'
+    CONTAINER_ARTIFACT_DIR="${HOST_ARTIFACT_DIR}"
   }
   stages {
     stage('Build') {
@@ -30,7 +32,7 @@ pipeline {
     stage('Run website') {
         steps {
           sh "docker rm -f ${siteName} || :"
-          sh "docker run -d -e VIRTUAL_HOST=${siteName} -e LETSENCRYPT_HOST=${siteName}  -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}  --network=${DOCKER_NETWORK} --name ${siteName} ${DOCKER_IMAGE}:${label}"
+          sh "docker run -d -v ${HOST_ARTIFACT_DIR}:${CONTAINER_ARTIFACT_DIR}:ro -e VIRTUAL_HOST=${siteName} -e LETSENCRYPT_HOST=${siteName}  -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}  --network=${DOCKER_NETWORK} --name ${siteName} ${DOCKER_IMAGE}:${label}"
         }
     }
   }
