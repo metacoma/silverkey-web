@@ -17,7 +17,7 @@
         <div class="md-toolbar-row">
           <md-tabs class="md-primary">
             <md-tab id="tab-home" md-label="Home"></md-tab>
-            <md-tab id="tab-pages" md-label="Downloads"></md-tab>
+            <md-tab id="tab-download" md-label="Downloads"></md-tab>
           </md-tabs>
         </div>
       </md-app-toolbar>
@@ -30,7 +30,6 @@
     </md-app>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
   .md-app {
