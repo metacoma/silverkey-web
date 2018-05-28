@@ -22,7 +22,7 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button class="md-primary">Download</md-button>
+          <a href="https://silverkey.app/artifacts/silverkey-osx.zip"><md-button class="md-primary">Download</md-button></a>
         </md-card-actions>
       </md-card>
       <md-card>
@@ -48,7 +48,7 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button class="md-primary">Download</md-button>
+          <a href=https://silverkey.app/artifacts/silverkey-linux.run><md-button class="md-primary">Download</md-button></a>
         </md-card-actions>
       </md-card>
 
