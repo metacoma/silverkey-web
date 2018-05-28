@@ -22,24 +22,23 @@
         </div>
       </md-app-toolbar>
 
-      <md-app-content style="min-height: 100vh;">
-        <iframe width="560" height="600" src="https://www.youtube.com/embed/ca7T0bXptU8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <md-app-content style="min-height: 1000vh;">
+<!--
+        <youtube video-id="-3JCESdFNyw" :player-height=800></youtube>
+-->
       </md-app-content>
     </md-app>
   </div>
 </template>
 
+
 <style lang="scss" scoped>
   .md-app {
-    max-height: 400px;
+    max-height: 1200px;
     border: 1px solid rgba(#000, .12);
   }
 
    // Demo purposes only
-  .md-drawer {
-    width: 230px;
-    max-width: calc(100vw - 125px);
-  }
 </style>
 
 <script>
