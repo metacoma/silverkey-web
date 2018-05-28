@@ -9,7 +9,7 @@ pipeline {
     DOCKER_NETWORK = 'webproxy'
     LETSENCRYPT_EMAIL='ryabin.ss@gmail.com'
 
-    HOST_ARTIFACT_DIR='/opt/silverkey/web-artifacts'
+    HOST_ARTIFACT_DIR='/opt/silverkey/'
     CONTAINER_ARTIFACT_DIR="${HOST_ARTIFACT_DIR}"
   }
   stages {
