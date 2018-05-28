@@ -11,8 +11,66 @@
         <md-tab md-alignment="right" id="tab-signup" md-label="SIGNUP" to="/signup" md-disabled></md-tab>
       </md-tabs>
 
+      <div>
+      <md-card>
+        <md-card-media>
+          <img src="https://o.aolcdn.com/images/dims?quality=100&image_uri=http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fadam%2F35c8f5ba857bb5553899d7615f9b5069%2FOS-X-Logo-300x177.png&client=cbc79c14efcebee57402&signature=1baeb84a5bc6e0f772de06ac2c2916ea2d59c95e" alt="People">
+        </md-card-media>
+
+        <md-card-header>
+          <div class="md-title">OSX</div>
+        </md-card-header>
+
+        <md-card-actions>
+          <md-button class="md-primary">Download</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+
+        <md-card-media>
+          <img src="http://diylogodesigns.com/blog/wp-content/uploads/2016/04/Microsoft-Logo-icon-png-Transparent-Background.png" alt="Windows">
+        </md-card-media>
+
+        <md-card-header>
+          <div class="md-title">Windows</div>
+        </md-card-header>
+
+        <md-card-actions>
+          <md-button disabled>Download</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+        <md-card-media>
+          <img src="http://www.stickpng.com/assets/images/58480e82cef1014c0b5e4927.png" alt="Windows">
+        </md-card-media>
+        <md-card-header>
+          <div class="md-title">Linux</div>
+        </md-card-header>
+
+        <md-card-actions>
+          <md-button class="md-primary">Download</md-button>
+        </md-card-actions>
+      </md-card>
+
+      </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+  .md-card {
+    min-width: 320px;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .md-card-media {
+    width: 120px;
+    height: 120px;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+  }
+</style>
 
 <script>
 export default {
