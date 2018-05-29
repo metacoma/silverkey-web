@@ -19,3 +19,11 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+module.exports = {
+  // ...
+  build: {
+    assetsPublicPath: '/',
+    assetsSubDirectory: 'assets'
+  }
+}
