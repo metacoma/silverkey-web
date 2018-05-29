@@ -22,7 +22,8 @@
         </md-card-header>
 
         <md-card-actions>
-          <a href="https://silverkey.app/artifacts/silverkey-osx.zip"><md-button class="md-primary">Download</md-button></a>
+          <a href="https://silverkey.app/artifacts/silverkey-latest-osx.zip"><md-button class="md-primary">Latest</md-button></a>
+          <a href="https://silverkey.app/artifacts/silverkey-osx.zip"><md-button class="md-primary">Stable</md-button></a>
         </md-card-actions>
       </md-card>
       <md-card>
@@ -36,19 +37,21 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button disabled>Download</md-button>
+          <md-button disabled>Latest</md-button>
+          <md-button disabled>Stable</md-button>
         </md-card-actions>
       </md-card>
       <md-card>
         <md-card-media>
-          <img src="http://www.stickpng.com/assets/images/58480e82cef1014c0b5e4927.png" alt="Windows">
+          <img src="http://www.stickpng.com/assets/images/58480e82cef1014c0b5e4927.png" alt="Linux">
         </md-card-media>
         <md-card-header>
           <div class="md-title">Linux</div>
         </md-card-header>
 
         <md-card-actions>
-          <a href=https://silverkey.app/artifacts/silverkey-linux.run><md-button class="md-primary">Download</md-button></a>
+          <a href=https://silverkey.app/artifacts/silverkey-latest-linux.run><md-button class="md-primary">Latest</md-button></a>
+          <a href=https://silverkey.app/artifacts/silverkey-linux.run><md-button class="md-primary">Stable</md-button></a>
         </md-card-actions>
       </md-card>
 
