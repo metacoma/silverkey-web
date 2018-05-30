@@ -1,2 +1,5 @@
 local template = require "resty.template"
-template.render("template/silverkey.yml.tmpl", { version = "Hello, World!" })
+local cjson = require "cjson"
+
+ngx.say(template.render("silverkey.yml.tmpl", { version = "Hello, World!" }))
+
