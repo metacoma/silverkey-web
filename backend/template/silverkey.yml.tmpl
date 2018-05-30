@@ -7,7 +7,6 @@ metadata:
   name: etcd-silverkey
   labels:
     app: etcd-silverkey
-    version: "{{version}}"
 spec:
   ports:
   - port: 2380
@@ -46,7 +45,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
       - name: etcd-silverkey
-        image: "gcr.io/google_containers/etcd-amd64:3.0.17"
+        image: "gcr.io/google_containers/etcd-amd64:{{etcd.version}}"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 2380
