@@ -26,8 +26,10 @@ RUN git clone https://github.com/jprjr/idgaf          \
     && rm -rf /tmp/idgaf /tmp/sockexec
 
 RUN opm install                                       \
+      bungle/lua-resty-template                       \
       jprjr/lua-resty-exec
 
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD backend/lua/ /usr/local/openresty/nginx/lua/
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
