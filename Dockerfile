@@ -27,7 +27,8 @@ RUN git clone https://github.com/jprjr/idgaf          \
 
 RUN opm install                                       \
       bungle/lua-resty-template                       \
-      jprjr/lua-resty-exec
+      jprjr/lua-resty-exec                            \
+      thibaultcha/lua-resty-jit-uuid
 
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
