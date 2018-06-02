@@ -26,8 +26,11 @@ RUN git clone https://github.com/jprjr/idgaf          \
     && rm -rf /tmp/idgaf /tmp/sockexec
 
 RUN opm install                                       \
-      jprjr/lua-resty-exec
+      bungle/lua-resty-template                       \
+      jprjr/lua-resty-exec                            \
+      thibaultcha/lua-resty-jit-uuid
 
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD backend/lua/ /usr/local/openresty/site/lualib/silverkey
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
