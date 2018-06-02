@@ -24,6 +24,7 @@ ADD backend/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 # XXX multistage
 RUN apk update && apk add                       \
   alpine-sdk                                    \
+  openssl-dev                                   \
   skalibs                                       \
   skalibs-dev
 WORKDIR /tmp
@@ -43,6 +44,8 @@ RUN opm install                                       \
       jprjr/lua-resty-exec                            \
       thibaultcha/lua-resty-jit-uuid
 
+RUN ln -s /usr/local/openresty/luajit/bin/luajit-2.1.0-beta3 /usr/local/bin/lua
+RUN luarocks install etcd --from=http://mah0x211.github.io/rocks/
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
 ADD backend/lua/ /usr/local/openresty/site/lualib/silverkey
