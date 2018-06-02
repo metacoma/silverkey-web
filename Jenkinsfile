@@ -31,6 +31,11 @@ pipeline {
     }
     stage('Run website') {
         steps {
+          sh """
+            docker ps -f name="${sitename}-db" | grep ${sitename}-db || docker run --rm -it --name ${sitename}-db --network=webproxy etcd:3.3.6 sh -c "etcd --advertise-client-urls http://${sitename}-db:2379 --listen-client-urls http://0.0.0.0:2379"
+          """
+        }
+        steps {
           sh "docker rm -f ${siteName} || :"
           sh "docker run -d -v ${HOST_ARTIFACT_DIR}:${CONTAINER_ARTIFACT_DIR}:ro -e VIRTUAL_HOST=${siteName} -e LETSENCRYPT_HOST=${siteName}  -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}  --network=${DOCKER_NETWORK} --name ${siteName} ${DOCKER_IMAGE}:${label}"
         }
