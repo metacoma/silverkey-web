@@ -32,5 +32,5 @@ RUN opm install                                       \
 
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
-ADD backend/lua/ /usr/local/openresty/nginx/lua/
+ADD backend/lua/ /usr/local/openresty/site/lualib/silverkey
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
