@@ -32,6 +32,7 @@ function EtcdSk:get(key)
 end
 
 function EtcdSk:ns2table(namespace)
+  local inspect = require('inspect')
   local t = {}
 
   local res, err = self:getApiCall(namespace)
@@ -41,11 +42,12 @@ function EtcdSk:ns2table(namespace)
   end
 
 
-  for node in decodeJSON(res)["node"]["nodes"] do
-    t[node["key"]] = node["value"]
+  local data = decodeJSON(res)
+  for nodeId = 1, table.getn(data.node.nodes) do
+    local node = data.node.nodes[nodeId]
+    t[node.key] = node.value
   end
-
-  return t
+  return t, nil
 end
 
 function EtcdSk:new(url)
