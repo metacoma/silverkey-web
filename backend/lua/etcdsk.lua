@@ -9,30 +9,32 @@ function EtcdSk:getApiCall(namespace)
     local httpc = http.new()
 
     local res, err = httpc:request_uri(
-        self.url .. "/v2/keys/" .. namespace,
+        self.url .. "/v2/keys" .. namespace,
         {}
     )
 
     if not res then
       return nil, err
     end
-    return res.body
+    return res.body, nil
 end
 
 function EtcdSk:get(key)
-    local res, err = EtcdSk:getApiCall(key)
+    local res, err = self:getApiCall(key)
 
     if not res then
       return nil, err
     end
 
+
+    --return decodeJSON(res)
     return decodeJSON(res)["node"]["value"], nil
 end
 
 function EtcdSk:ns2table(namespace)
   local t = {}
 
-  local res, err = EtcdSk:getApiCall(namespace)
+  local res, err = self:getApiCall(namespace)
 
   if not res then
     return nil, err
