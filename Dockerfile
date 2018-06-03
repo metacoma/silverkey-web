@@ -29,6 +29,7 @@ RUN apk update && apk add                       \
   alpine-sdk                                    \
   openssl-dev                                   \
   skalibs                                       \
+  jq                                            \
   skalibs-dev
 WORKDIR /tmp
 RUN git clone https://github.com/jprjr/sockexec.git       \
