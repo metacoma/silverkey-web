@@ -26,6 +26,7 @@ RUN apk update && apk add                       \
   alpine-sdk                                    \
   openssl-dev                                   \
   skalibs                                       \
+  jq                                            \
   skalibs-dev
 WORKDIR /tmp
 ENV SOCKEXEC_PIN_COMMIT "f2bd0f87edf3edf12a55123873da5e158ad40fd5"
