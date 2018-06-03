@@ -23,13 +23,17 @@ COPY --from=vue-app-builder /vue-app/dist /usr/local/openresty/nginx/html
 ADD backend/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 # XXX multistage
 RUN apk update && apk add                       \
+  musl-dev                                      \
+  gcc                                           \
+  make                                          \
   alpine-sdk                                    \
   openssl-dev                                   \
   skalibs                                       \
   skalibs-dev
 WORKDIR /tmp
-RUN git clone https://github.com/jprjr/sockexec.git   \
-    && cd sockexec                                    \
+RUN git clone https://github.com/jprjr/sockexec.git       \
+    && cd sockexec                                        \
+    && ./configure --prefix=/usr --bindir=/usr/local/bin  \
     && make install
 WORKDIR /tmp
 RUN git clone https://github.com/jprjr/idgaf          \
