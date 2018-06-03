@@ -94,6 +94,11 @@ function K8S:deployBackend(backendId)
   return self:kubectl(deployCmd, manifest)
 end
 
+function K8S:destroyBackend(backendId)
+  return self:kubectl("delete ns " .. backendId, nil)
+end
+
+
 function K8S:new(env_name)
   local self = {}
   local inspect = require('inspect')
