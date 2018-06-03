@@ -33,11 +33,38 @@ function K8S.new_backend()
   end
 end
 
+function K8S:kubectl(cmd, stdin)
+  local tmpfile = "/tmp/kubeconfig_" .. self.name
+  local f = io.open(tmpfile, "w")
+  f:write(self.env.kubeconfig)
+  f:close()
+
+  local cmd = { "/usr/local/bin/kubectl", "--kubeconfig", tmpfile, "get", "pods" }
+  local prog = require 'resty.exec'.new(os.getenv("SOCKEXEC_SOCKET"))
+
+  local res, err = prog(
+    {
+     argv = cmd,
+     stdin = stdin,
+    }
+  )
+  os.remove(tmpfile)
+
+  if (err) then
+    return nil, err
+  else
+    return res, nil
+  end
+
+
+end
+
 function K8S:new(env_name)
   local self = {}
   local inspect = require('inspect')
   setmetatable(self, { __index = K8S })
   self.env, err = require('etcdsk'):new(os.getenv("DB_HOST")):ns2table("/backend/" .. env_name)
+  self.name = env_name
   ngx.log(ngx.ERR, inspect(self.env))
   return self
 end
