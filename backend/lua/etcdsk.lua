@@ -17,7 +17,9 @@ function EtcdSk:getApiCall(namespace)
         {}
     )
 
+
     if not res then
+      ngx.log(ngx.ERR, "NILL res " .. self.url .. "/v2/keys" .. namespace .. " url")
       return nil, err
     end
     return res.body, nil
@@ -30,8 +32,6 @@ function EtcdSk:get(key)
       return nil, err
     end
 
-
-    --return decodeJSON(res)
     return decodeJSON(res)["node"]["value"], nil
 end
 
@@ -40,6 +40,8 @@ function EtcdSk:ns2table(namespace)
   local t = {}
 
   local res, err = self:getApiCall(namespace)
+
+  ngx.log(ngx.ERR, inspect(res))
 
   if not res then
     return nil, err
