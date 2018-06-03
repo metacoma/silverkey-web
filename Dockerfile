@@ -46,6 +46,8 @@ RUN opm install                                       \
       agentzh/lua-resty-http                          \
       thibaultcha/lua-resty-jit-uuid
 
+RUN luarocks install inspect
+
 RUN ln -s /usr/local/openresty/luajit/bin/luajit-2.1.0-beta3 /usr/local/bin/lua
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
