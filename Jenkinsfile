@@ -32,7 +32,7 @@ pipeline {
     stage('Run db') {
         steps {
           sh """
-            docker ps -f name="${siteName}-db" | grep ${siteName}-db || docker run -d --name ${siteName}-db --network=webproxy etcd:3.3.6 sh -c "etcd --advertise-client-urls http://${siteName}-db:2379 --listen-client-urls http://0.0.0.0:2379"
+            docker ps -f name="${siteName}-db" | grep ' ${siteName}-db' || docker run -d --name ${siteName}-db --network=webproxy etcd:3.3.6 sh -c "etcd --advertise-client-urls http://${siteName}-db:2379 --listen-client-urls http://0.0.0.0:2379"
           """
         }
     }
