@@ -5,6 +5,10 @@ local decodeJSON = require('cjson.safe').decode
 
 local EtcdSk = {}
 
+local function basename(namespace)
+  return string.gsub(namespace, "(.*/)(.*)", "%2")
+end
+
 function EtcdSk:getApiCall(namespace)
     local httpc = http.new()
 
@@ -45,7 +49,7 @@ function EtcdSk:ns2table(namespace)
   local data = decodeJSON(res)
   for nodeId = 1, table.getn(data.node.nodes) do
     local node = data.node.nodes[nodeId]
-    t[node.key] = node.value
+    t[basename(node.key)] = node.value
   end
   return t, nil
 end
