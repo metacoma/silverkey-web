@@ -39,7 +39,7 @@ pipeline {
     stage('Run website') {
         steps {
           sh "docker rm -f ${siteName} || :"
-          sh "docker run -d -v ${HOST_ARTIFACT_DIR}:${CONTAINER_ARTIFACT_DIR}:ro -e VIRTUAL_HOST=${siteName} -e LETSENCRYPT_HOST=${siteName}  -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}  --network=${DOCKER_NETWORK} --name ${siteName} ${DOCKER_IMAGE}:${label}"
+          sh "docker run -d -v ${HOST_ARTIFACT_DIR}:${CONTAINER_ARTIFACT_DIR}:ro -e DB_HOST=http://${siteName}-db:2379 -e VIRTUAL_HOST=${siteName} -e LETSENCRYPT_HOST=${siteName}  -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}  --network=${DOCKER_NETWORK} --name ${siteName} ${DOCKER_IMAGE}:${label}"
         }
     }
   }
