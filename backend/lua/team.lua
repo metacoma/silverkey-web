@@ -33,4 +33,11 @@ function k8s.new_backend()
   end
 end
 
+function k8s:new(env_name) {
+  local self = {}
+  setmetatable(self, { __index = EtcdSk })
+  self.env = equire('etcdsk'):new(os.getenv("DB_HOST")):ns2table("/backend/" .. env_name)
+  return self
+}
+
 return k8s
