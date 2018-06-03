@@ -19,6 +19,9 @@ function EtcdSk:get(key)
     return decodeJSON(res.body), nil
 end
 
+function EtcdSk:ns2table() {
+}
+
 function EtcdSk:new(url)
    local self = {}
    setmetatable(self, { __index = EtcdSk })
