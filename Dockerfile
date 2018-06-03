@@ -45,6 +45,7 @@ RUN git clone https://github.com/jprjr/idgaf          \
 RUN opm install                                       \
       bungle/lua-resty-template                       \
       jprjr/lua-resty-exec                            \
+      agentzh/lua-resty-http                          \
       thibaultcha/lua-resty-jit-uuid
 
 RUN ln -s /usr/local/openresty/luajit/bin/luajit-2.1.0-beta3 /usr/local/bin/lua
