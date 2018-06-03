@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{team.uuid}}
+  name: {{uuid}}
 ---
 apiVersion: v1
 kind: Service
@@ -11,7 +11,7 @@ metadata:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
 metadata:
   name: etcd-silverkey
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   labels:
     app: etcd-silverkey
 spec:
@@ -28,7 +28,7 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: etcd-silverkey
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   labels:
     app: etcd-silverkey
 spec:
@@ -213,7 +213,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: etcd-browser-silverkey
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   labels:
     app: etcd-browser-silverkey
 spec:
@@ -235,7 +235,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   name: etcd-browser-silverkey
   labels:
     app: etcd-browser-silverkey
@@ -250,7 +250,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: openresty-silverkey
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   labels:
     app: openresty-silverkey
 spec:
@@ -269,7 +269,7 @@ kind: Service
 metadata:
 metadata:
   name: openresty-silverkey
-  namespace: {{team.uuid}}
+  namespace: {{uuid}}
   labels:
     app: openresty-silverkey
 spec:
