@@ -1,6 +1,6 @@
-local k8s = {}
+local K8S = {}
 
-function k8s.new_backend()
+function K8S.new_backend()
   local template = require "resty.template"
   local cjson = require "cjson"
   local uuid = require 'resty.jit-uuid'
@@ -33,11 +33,12 @@ function k8s.new_backend()
   end
 end
 
-function k8s:new(env_name) {
+function K8S:new(env_name)
   local self = {}
-  setmetatable(self, { __index = EtcdSk })
-  self.env = equire('etcdsk'):new(os.getenv("DB_HOST")):ns2table("/backend/" .. env_name)
+  setmetatable(self, { __index = K8S })
+  self.env, err = require('etcdsk'):new(os.getenv("DB_HOST")):ns2table("/backend/" .. env_name)
   return self
-}
+end
 
-return k8s
+
+return K8S
