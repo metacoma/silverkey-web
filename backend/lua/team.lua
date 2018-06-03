@@ -1,18 +1,6 @@
-local K8S = {}
+local k8s = {}
 
-function K8S:dump_kubeconfig()
-  local kubeconfig = K8S:dbKey("kubeconfig")
-end
-
-function K8S:dbNs() {
-  return "/backend/" .. self.k8s
-}
-
-function K8S:dbKey(key) {
-  return self.etcd:get(K8S:dbNs() .. "/" .. key)
-}
-
-function K8S:deploy()
+function k8s.new_backend()
   local template = require "resty.template"
   local cjson = require "cjson"
   local uuid = require 'resty.jit-uuid'
@@ -45,13 +33,4 @@ function K8S:deploy()
   end
 end
 
-function K8S:new(k8s_name)
-  local self = {}
-  setmetatable(self, { __index = K8S })
-  self.uuid = uuid
-  self.k8s = k8s_name
-  self.etcd = require('etcdsk'):new(os.getenv('DB_HOST'))
-  return self
-end
-
-return K8S
+return k8s
