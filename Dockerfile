@@ -28,10 +28,8 @@ RUN apk update && apk add                       \
   skalibs                                       \
   skalibs-dev
 WORKDIR /tmp
-ENV SOCKEXEC_PIN_COMMIT "f2bd0f87edf3edf12a55123873da5e158ad40fd5"
 RUN git clone https://github.com/jprjr/sockexec.git   \
     && cd sockexec                                    \
-    && git checkout ${SOCKEXEC_PIN_COMMIT}            \
     && make install
 WORKDIR /tmp
 RUN git clone https://github.com/jprjr/idgaf          \
