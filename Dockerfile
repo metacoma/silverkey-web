@@ -43,7 +43,6 @@ RUN opm install                                       \
       thibaultcha/lua-resty-jit-uuid
 
 RUN ln -s /usr/local/openresty/luajit/bin/luajit-2.1.0-beta3 /usr/local/bin/lua
-RUN luarocks install etcd --from=http://mah0x211.github.io/rocks/
 
 ADD backend/entrypoint.sh /usr/local/bin/entrypoint.sh
 ADD backend/lua/ /usr/local/openresty/site/lualib/silverkey
