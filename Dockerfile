@@ -9,6 +9,7 @@ FROM alpine:latest AS etcd-stuff
 ENV ETCD_VER v3.3.6
 ENV GITHUB_URL=https://github.com/coreos/etcd/releases/download
 ENV DOWNLOAD_URL=${GITHUB_URL}
+ENV SOCKEXEC_PIN_COMMIT "f2bd0f87edf3edf12a55123873da5e158ad40fd5"
 ADD ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 RUN mkdir /etcd
 RUN tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /etcd --strip-components=1
@@ -28,6 +29,7 @@ RUN apk update && apk add                       \
   skalibs-dev
 WORKDIR /tmp
 RUN git clone https://github.com/jprjr/sockexec.git   \
+    git checkout ${SOCKEXEC_PIN_COMMIT}               \
     && cd sockexec                                    \
     && make install
 WORKDIR /tmp
